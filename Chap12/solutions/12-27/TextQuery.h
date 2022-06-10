@@ -12,10 +12,12 @@ typedef std::shared_ptr<std::vector<std::string>> pLines;
 typedef std::shared_ptr<std::set<uint64_t>> pWordIdx;
 
 class QueryResult {
+friend std::ostream &print(std::ostream &os, const QueryResult &res);
 public:
   QueryResult();
   QueryResult(pLines, pWordIdx);
   size_t size();
+private:
   pLines plines;
   pWordIdx pidx;
 };
@@ -29,4 +31,4 @@ private:
   std::unordered_map<std::string, pWordIdx> wordMap;
 };
 
-std::ostream &print(std::ostream &os, QueryResult &&res);
+std::ostream &print(std::ostream &os, QueryResult &res);
